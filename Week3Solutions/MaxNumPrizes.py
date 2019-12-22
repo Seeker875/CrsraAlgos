@@ -2,26 +2,48 @@
 import sys
 
 def optimal_summands(n):
-    summands = []
-    #write your code here
-    mySum=0
-    
-    for i in range(1,n+1):
-    	#starting from 1
-    	if mySum+i<=n:
-    		summands.append(i)
-    		mySum += i
 
-    #getting last value for remaining bal		
-    if mySum < n:
-    	summands[-1] = summands[-1]+ n -sum(summands)
+	#write your code here	
+	# for i in range(0,(n//2)+2):
+	#   #starting from 1
+	#   if mySum+i+1<=n:
+	#       summands.append(i+1)
+	#       mySum += i+1
+	
+	half = n//2
 
-    return summands
+	if n<=3:
+
+		if n<=2:
+			return [n]
+
+		if n==3:
+			half=n
+
+	mySum = half*(half+1)/2
+
+	while mySum>n:
+		half-=1
+		mySum =  half*(half+1)/2
+	
+	summands=list(range(1,half+1))
+
+	if mySum<n:
+		summands[-1] = summands[-1]+n-int(mySum)
+	
+
+
+	return summands
 
 if __name__ == '__main__':
-    input = sys.stdin.read()
-    n = int(input)
-    summands = optimal_summands(n)
-    print(len(summands))
-    for x in summands:
-        print(x, end=' ')
+	input = sys.stdin.read()
+	n = int(input)
+	summands = optimal_summands(n)
+	print(len(summands))
+	# for x in summands:
+	# 	print(x, end=' ')
+
+
+
+
+

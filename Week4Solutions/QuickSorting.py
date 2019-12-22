@@ -1,29 +1,39 @@
-# Uses python3
+#python3
 import sys
 import random
 #quick sort with randon initial number
 # Fix for equal numbers
+      
+
 def partition3(a, l, r):
     
     x=a[l]
     j=l
-    m=j
+    st=j
+    end=r
 
-    for i in range(l+1,r+1):
-        if a[i]==x:
-            m=j+1
-            a[i],a[m]=a[m],a[i]
+    while st<= end:
+       
+        if a[st]<x:
+           a[st],a[j]=a[j],a[st]
+           j+=1
+           
+        
+        if a[st]>x:
+           a[st],a[end]=a[end],a[st]
+           end-=1
+           st-=1
+        st+=1
+        #print(a)  
+    return j,end        
 
-        elif a[i]<=x:
-            j+=1
-            a[i],a[j]=a[j],a[i]
 
-    a[l], a[j] = a[j], a[l]
-    return j,m        
+
+
 
 def partition2(a, l, r):
     x = a[l]
-    j = l;
+    j = l
     for i in range(l + 1, r + 1):
         if a[i] <= x:
             j += 1

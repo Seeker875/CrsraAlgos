@@ -44,7 +44,7 @@ def Merge(b,c):
 			d.append(c[0])
 			c.remove(c[0])
 			count+=1
-	count+=count		
+	#count+=count		
 	d=d+b+c
 	return d,count        
 
@@ -54,14 +54,14 @@ def MergeSort(unSort):
 	n=len(unSort)
 
 	if n ==1:
-		return unSort
-	count=0
+		return unSort,0
+	#count=0
 	mid =n//2
-	b =  MergeSort(unSort[:mid])
-	c = MergeSort(unSort[mid:])
+	b,cnt1 =  MergeSort(unSort[:mid])
+	c,cnt2 = MergeSort(unSort[mid:])
 
 	a,tempCount = Merge(b,c)
-	count+=tempCount
+	count=tempCount+cnt1+cnt2
 	return a,count   
 
 def get_number_of_inversions(a, b, left, right):
@@ -73,9 +73,10 @@ def get_number_of_inversions(a, b, left, right):
 	number_of_inversions += get_number_of_inversions(a, b, left, ave)
 	number_of_inversions += get_number_of_inversions(a, b, ave, right)
 	#write your code here
-	a, tempCount = MergeSort(a[:ave], a[ave:])
+	a, tempCount = MergeSort(a[:ave])
 	number_of_inversions += tempCount
-
+	b, tempCount = MergeSort(b[ave:])
+	number_of_inversions += tempCount
 	return number_of_inversions
 
 if __name__ == '__main__':
