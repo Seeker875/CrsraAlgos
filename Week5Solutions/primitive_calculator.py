@@ -1,17 +1,14 @@
 # Uses python3
 import sys
 
-# def optimal_sequence(n):
-#     sequence = []
-#     while n >= 1:
-#         sequence.append(n)
-#         if n % 3 == 0:
-#             n = n // 3
-#         elif n % 2 == 0:
-#             n = n // 2
-#         else:
-#             n = n - 1
-#     return reversed(sequence)
+
+'''
+Perfect Shortest Path Dp example
+1. recursion to memoiszation
+2. Guessing, Try all keep the best 1
+DAG
+
+'''
 def optimal_sequence(n):
 
     MinOps=[0]*(n+1)
