@@ -1,6 +1,5 @@
 # Uses python3
 def edit_distance(s, t):
-    #write your code here
     #s="editing"
 
 
