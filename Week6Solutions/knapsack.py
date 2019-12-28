@@ -11,6 +11,8 @@ def optimal_weight(W, w):
   Val =[[0 for x in range(W+1)] for y in range(len(w)+1)]
     #Check for every number up to wt, use memoization
   for i in range(1,(len(w)+1)):
+    #Move row wise
+    #start from 2nd row and 2nd col
     	for wt in range(1,(W+1)):
     		#wt above in the matrix
     		Val[i][wt] = Val[i-1][wt]
