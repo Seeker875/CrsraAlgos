@@ -76,4 +76,8 @@ if __name__ == '__main__':
     cn = data[0]
     data = data[1:]
     c = data[:cn]
-    print(lcs3(a, b, c))
+    a=''.join(str(x) for x in a)
+    b=''.join(str(x) for x in b)
+    c=''.join(str(x) for x in c)
+    print(lcs3(a,b,c))
+    #print(f'{a} {b} {c}')
