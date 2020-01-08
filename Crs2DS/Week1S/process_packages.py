@@ -25,8 +25,8 @@ class Buffer:
             self.finish_time.append(request.time_to_process+request.arrived_at)
             
 
-        elif self.finish_time[0]<=request.arrived_at:
-            started_at=request.arrived_at
+        elif self.finish_time[0]<=request.arrived_at-request.time_to_process:
+            started_at=self.finish_time[-1]+request.arrived_at
             was_dropped=False
             self.finish_time.append(request.time_to_process+request.arrived_at)
             self.finish_time.pop(0)
