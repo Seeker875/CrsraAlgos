@@ -1,7 +1,7 @@
 # python3
 
 from collections import namedtuple
-
+#Bracket is udf type(given name, char is charcter of text
 Bracket = namedtuple("Bracket", ["char", "position"])
 
 
@@ -14,8 +14,9 @@ def find_mismatch(text):
 
     for i, nextElem in enumerate(text):
         if nextElem in "([{":
-
+            #char will be 1 of {[(
             temp =  Bracket(nextElem,i)
+            #named tuple bracket in a list
             opening_brackets_stack.append(temp)
 
         if nextElem in ")]}":
@@ -23,7 +24,7 @@ def find_mismatch(text):
                 return i+1
                 #print(i)
                 
-
+            #last element of stack, named tuple
             top =  opening_brackets_stack.pop()
 
 
