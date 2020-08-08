@@ -2,9 +2,20 @@
 
 import sys
 
-def reach(adj, x, y):
-    #write your code here
+def explore(v):
+    visited[v]=1
+   # print(adj[v])
+    for w in adj[v]:
+    #    print(f'w outside if is {w}')
+        if visited[w]==0:
+     #       print(f'w is {w}')
+            explore(w)
     return 0
+
+def reach(adj, x, y):
+    explore(x)
+   # print(visited)
+    return visited[y]
 
 if __name__ == '__main__':
     input = sys.stdin.read()
@@ -14,8 +25,11 @@ if __name__ == '__main__':
     edges = list(zip(data[0:(2 * m):2], data[1:(2 * m):2]))
     x, y = data[2 * m:]
     adj = [[] for _ in range(n)]
+   
     x, y = x - 1, y - 1
+    visited =[0] *(n)
     for (a, b) in edges:
         adj[a - 1].append(b - 1)
         adj[b - 1].append(a - 1)
     print(reach(adj, x, y))
+   # print(adj)
