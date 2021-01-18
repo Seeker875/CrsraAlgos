@@ -4,14 +4,19 @@ import sys
 
 def get_optimal_value(capacity, weights, values):
     value = 0.
-    # write your code here
+    
     #get ratio
     vw=[values[i]/weights[i] for i in range(0,len(values))]
     #get idx of the sorted list
+    ### need idx to get element from wt as well
     vwIdx= sorted(range(len(vw)),key=vw.__getitem__,reverse=True)
 
     for idx in vwIdx:
+        #### this makes it fractional
+        #### we are taking minimum as well
     	a=min(weights[idx],capacity)
+        
+        #### reduce the capacity
     	capacity-=a
     	value+= a*values[idx]/weights[idx]
 
