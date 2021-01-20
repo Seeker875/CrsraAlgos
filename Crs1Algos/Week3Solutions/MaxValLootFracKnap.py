@@ -12,6 +12,10 @@ def get_optimal_value(capacity, weights, values):
     vwIdx= sorted(range(len(vw)),key=vw.__getitem__,reverse=True)
 
     for idx in vwIdx:
+        ### to break if thrs no capacity left
+        if capacity ==0:
+            return value
+        
         #### this makes it fractional
         #### we are taking minimum as well
     	a=min(weights[idx],capacity)
